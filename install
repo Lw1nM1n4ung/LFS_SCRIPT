@@ -1,0 +1,7 @@
+#!/bin/bash 
+path=$(pwd)
+source $path/function
+
+echo "Installation Is started ."
+
+
