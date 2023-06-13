@@ -11,17 +11,17 @@ S1=$(date +%S )
 h1=$(date +%H ) 
 M1=$(date +%M ) 
 
-    cd $path/sources/
+    cd /sources/
     tar -xvf gettext-0.21.1.tar.xz
-    cd $path/sources/gettext-0.21.1
+    cd /sources/gettext-0.21.1
     ./configure --disable-shared
     make
     cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin
-    rm -rf $path/sources/gettext-0.21.1
+    rm -rf /sources/gettext-0.21.1
 h2=$(date +%H ) 
 M2=$(date +%M ) 
 S2=$(date +%S ) 
-echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> $path/finish.txt
+echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> /finish.txt
 
 
 }
@@ -31,18 +31,18 @@ S1=$(date +%S )
 h1=$(date +%H ) 
 M1=$(date +%M ) 
 
- cd $path/sources/
+ cd /sources/
  tar -xvf bison-3.8.2.tar.xz
- cd $path/sources/bison-3.8.2
+ cd /sources/bison-3.8.2
  ./configure --prefix=/usr \
 --docdir=/usr/share/doc/bison-3.8.2
 make
 make install
-rm -rf $path/sources/bison-3.8.2 
+rm -rf /sources/bison-3.8.2 
 h2=$(date +%H ) 
 M2=$(date +%M ) 
 S2=$(date +%S ) 
-echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> $path/finish.txt
+echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> /finish.txt
 
 
 }
@@ -52,9 +52,9 @@ S1=$(date +%S )
 h1=$(date +%H ) 
 M1=$(date +%M ) 
 
- cd $path/sources/
+ cd /sources/
  tar -xvf perl-5.36.0.tar.xz
- cd $path/sources/perl-5.36.0
+ cd /sources/perl-5.36.0
  sh Configure -des \
  -Dprefix=/usr \
  -Dvendorprefix=/usr \
@@ -66,11 +66,11 @@ M1=$(date +%M )
  -Dvendorarch=/usr/lib/perl5/5.36/vendor_perl
 make
 make install
-rm -rf $path/sources/perl-5.36.0 
+rm -rf /sources/perl-5.36.0 
 h2=$(date +%H ) 
 M2=$(date +%M ) 
 S2=$(date +%S ) 
-echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> $path/finish.txt
+echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> /finish.txt
 
 
 }
@@ -80,9 +80,9 @@ S1=$(date +%S )
 h1=$(date +%H ) 
 M1=$(date +%M ) 
 
-cd $path/sources/
+cd /sources/
  tar -xvf python-3.11.2-docs-html.tar.bz2
- cd $path/sources/python-3.11.2-docs-html
+ cd /sources/python-3.11.2-docs-html
  ./configure --prefix=/usr \
  --enable-shared \
  --without-ensurepip
@@ -90,7 +90,7 @@ cd $path/sources/
 
 make
 make install
-rm -rf $path/sources/python-3.11.2-docs-html
+rm -rf /sources/python-3.11.2-docs-html
 echo " echo ${FUNCNAME[0]} is finished $(time). " >> finished.log
 }
 function TEX(){ 
@@ -98,17 +98,17 @@ S1=$(date +%S )
 h1=$(date +%H ) 
 M1=$(date +%M ) 
 
-cd $path/sources/
+cd /sources/
  tar -xvf texinfo-7.0.2.tar.xz
- cd $path/sources/texinfo-7.0.2
+ cd /sources/texinfo-7.0.2
  ./configure --prefix=/usr
  make
  make install
- rm -rf $path/sources/texinfo-7.0.2
+ rm -rf /sources/texinfo-7.0.2
  h2=$(date +%H ) 
 M2=$(date +%M ) 
 S2=$(date +%S ) 
-echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> $path/finish.txt
+echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> /finish.txt
 
 
 
@@ -121,9 +121,9 @@ S1=$(date +%S )
 h1=$(date +%H ) 
 M1=$(date +%M ) 
 
-cd $path/sources/
+cd /sources/
  tar -xvf util-linux-2.38.1.tar.xz
- cd $path/sources/util-linux-2.38.1
+ cd /sources/util-linux-2.38.1
  mkdir -pv /var/lib/hwclock
  ./configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
  --libdir=/usr/lib \
@@ -140,11 +140,11 @@ cd $path/sources/
  runstatedir=/run
 make
 make install
-rm -rf $path/sources/util-linux-2.38.1
+rm -rf /sources/util-linux-2.38.1
 h2=$(date +%H ) 
 M2=$(date +%M ) 
 S2=$(date +%S ) 
-echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> $path/finish.txt
+echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> /finish.txt
 
 
    
