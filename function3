@@ -15,9 +15,11 @@ cd  /sources/
 h2=$(date +%H ) 
 M2=$(date +%M ) 
 S2=$(date +%S ) 
-echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> /finish.txt
+echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> finish.txt
 
 }
+
+
 function IANA(){ 
 S1=$(date +%S ) 
 h1=$(date +%H ) 
@@ -989,6 +991,7 @@ cd  /sources/
  --without-bash-malloc \
  --with-installed-readline \
  --docdir=/usr/share/doc/bash-5.2.15
+
 make
 chown -Rv tester .
 su -s /usr/bin/expect tester << EOF
@@ -998,6 +1001,7 @@ expect eof
 lassign [wait] _ _ _ value
 exit $value
 EOF
+
 make install
 exec /usr/bin/bash --login
 
@@ -1006,7 +1010,6 @@ h2=$(date +%H )
 M2=$(date +%M ) 
 S2=$(date +%S ) 
 echo "${FUNCNAME[0]} is finished $((h1-h2))hour $((M1-M2))minutes $((S1- S2 ))seconds" >> /finish.txt
-
 
 
 }
@@ -1425,6 +1428,7 @@ cat > /etc/pip.conf << EOF
 root-user-action = ignore
 disable-pip-version-check = true
 EOF
+
 install -v -dm755 /usr/share/doc/python-3.11.2/html
 tar --strip-components=1 \
  --no-same-owner \

@@ -1,0 +1,81 @@
+#!/bin/bash
+
+read -p "Enter you block eg. /dev/sdX : " BLOCK
+
+if [[ ! -e $BLOCK ]]
+then
+echo "Your block $BLOCK is not found"
+exit 0
+fi
+#For root
+disk_info=$(lsblk $BLOCK)
+disk_size=$(echo "$disk_info" | awk 'NR==2{print $4}')
+echo "Your $BLOCK size is  $disk_size"
+echo "[1] manual partition "
+echo "[2] auto  partition "
+echo "[0] exit"
+read -p "Enter Number :: " PART
+if [ $PART -eq 1 ]
+then
+clear 
+echo "You choose [1] manual partition. "
+echo "manual partition"
+echo "Your $BLOCK size is  $disk_size"
+read -p "Enter your boot partition Size : " BOOT
+read -p "Enter your  root partition Size : " ROOT
+read -p "Enter your  swap partition Size : " SWAP
+
+
+elif [ $PART -eq 2 ]
+then
+clear 
+echo "You choose  [2] auto  partition "
+echo "auto partition"
+echo "Your $BLOCK size is  $disk_size"
+number_size="$(echo "$disk_size" | sed 's/G//' )"
+auto_boot="$(echo "$number_size * 0.1" | bc)"
+auto_swap="$(echo "$number_size * 0.2" | bc )"
+
+if [[ "$auto_boot" > "1.5" ]]
+then
+export auto_boot="1.5"
+fi 
+if [[ "$auto_swap" > "40" ]]
+then
+export auto_swap="40"
+fi 
+
+auto_root1="$(echo "$auto_swap + $auto_boot"  | bc)"
+auto_root2="$( echo "$number_size - $auto_root1"  | bc)"
+echo " Boot : $auto_boot"
+echo " Swap : $auto_swap" 
+echo " Root : $auto_root2"
+read -p "Continue [Y/N] : " continue
+
+
+if [ "$continue" == "Y" ] || [ "$continue" == "y" ]; then
+echo "Y"
+elif [[ "$continue" == "n" ]] || [["$continue" == "N"]]; then
+ 
+ exit 0
+
+else
+ exit 0
+fi
+
+
+
+
+
+elif [ $PART -eq 0 ]
+then
+exit 0 
+fi
+
+
+
+
+#For boot
+
+#For Swap
+
